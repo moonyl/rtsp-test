@@ -16,7 +16,11 @@ namespace xop {
     public:
         TaskScheduler(int id = 1);
 
+        void start();
+
     protected:
+        void handleTriggerEvent();
+
         int _id = 0;
         std::atomic_bool _shutdown;
         std::shared_ptr<Pipe> _wakeupPipe;

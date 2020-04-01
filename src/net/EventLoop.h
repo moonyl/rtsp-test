@@ -22,6 +22,7 @@ namespace xop {
         std::mutex _mutex;
         uint32_t _nThreads = 1;
         uint32_t _index = 1;
+        std::vector<std::shared_ptr<TaskScheduler>> _taskSchedulers;
     };
 
 }

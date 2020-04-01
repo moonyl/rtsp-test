@@ -46,5 +46,7 @@ void EventLoop::loop()
 #elif defined(WIN32) || defined(_WIN32)
         std::shared_ptr<TaskScheduler> taskSchedulerPtr(new SelectTaskScheduler(n));
 #endif
+        _taskSchedulers.push_back(taskSchedulerPtr);
+        std::shared_ptr<std::thread> t(new std::thread(&TaskScheduler::start, taskSchedulerPtr.get()));
     }
 }
